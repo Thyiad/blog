@@ -1,3 +1,3 @@
 # blog
 
-### www.thyiad.top 文章存档
+### 文章存档 of www.thyiad.top 
