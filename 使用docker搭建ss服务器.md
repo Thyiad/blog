@@ -14,7 +14,8 @@ docker run --restart=always --name=myshadowsocks -d -p 12345:12345 oddrationale/
 ### mritd/shadowsocks
 mritd/shadowsocks是我找到的第二个镜像，使用方法如下：
 ``` bash
-docker run -dt --name ss -p 6443:6443 mritd/shadowsocks -s "-s 0.0.0.0 -p 6443 -m chacha20 -k test123 --fast-open"
+docker run -dt --name ss -p 6443:6443 mritd/shadowsocks -s "-s 0.0.0.0 -p 6443 -m chacha20 -k ss123 --fast-open"
+docker run -d --name ssserver --restart=always -p 31568:31568 -p 31569:31569/udp mritd/shadowsocks:latest -m "ss-server" -s "-s 0.0.0.0 -p 31568 -m chacha20-ietf-poly1305 -k ss123 --fast-open" -x -e "kcpserver" -k "-t 127.0.0.1:31568 -l :31569 -key ss123 -mode fast2"
 ```
 17年下半年有段时间封锁特别严格，vpn服务器基本被屏蔽了，连购买的ss服务器也不能幸免。后来购买的ss服务器可用时，已经切换了加密方式，改为chacha20-ietf-poly1305。而上面的目测是不支持该加密方式的（我也不确定），为了以防万一，就找到了这个镜像。
 这个镜像的更新非常频繁，从更新日志中可以看出来，每次ss有更新，他这边马上也更新了，几乎是同步的。而且这个镜像还集成了kcptun（一个用来加速ss的工具，我也没用过），有兴趣的可以试试。
