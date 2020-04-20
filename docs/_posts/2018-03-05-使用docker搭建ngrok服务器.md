@@ -73,9 +73,9 @@ docker-compose up -d
 ngrok.exe -server_addr=tunnel.thyiad.top:4443 -subdomain=test -proto=http 52485
 ```
 敲完回车后会出现以下界面：
-![](https://www.thyiad.top/img/ngrok-running.png)
+![](https://static.yirenyian.com/blog/ngrok-running.png)
 我们来访问test.tunnel.thyiad.top试试：
-![](https://www.thyiad.top/img/ngrok-visible.png)
+![](https://static.yirenyian.com/blog/ngrok-visible.png)
 OK，现在就已经大功告成了！
 
 以上文件已经上传到github：

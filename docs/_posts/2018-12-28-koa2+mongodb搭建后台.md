@@ -59,7 +59,7 @@ var server = app.listen(3000, function (){
 node ./app.js
 ```
 此时会打印一行日志：app start listening at http://:::3000，让我们来访问试试：
-![](https://www.thyiad.top/img/koa-mongo-home.jpg)
+![](https://static.yirenyian.com/blog/koa-mongo-home.jpg)
 ok，koa启动一个项目就是这么简单。。
 
 ## 添加路由
@@ -115,7 +115,7 @@ const router = require('./router')
 app.use(router.routes()).use(router.allowedMethods())
 ```
 这个时候让我们重新启动一下，访问localhost:3000/api/test/hello试试：
-![](https://www.thyiad.top/img/koa-mongo-hello.jpg)
+![](https://static.yirenyian.com/blog/koa-mongo-hello.jpg)
 可以看到正确返回了hello world。
 
 ## 调试
@@ -136,9 +136,9 @@ npm install -g nodemon
 "debug": "nodemon --inspect ./app.js",
 ```
 然后我们运行 npm run debug，刷新我们的网页，用f12打开，此时我们能看到开发者工具上面多了一个nodejs的图标：
-![](https://www.thyiad.top/img/koa-mongo-debug-1.jpg)
+![](https://static.yirenyian.com/blog/koa-mongo-debug-1.jpg)
 点击这个图标，就可以跟调试网页一样调试nodejs代码了：
-![](https://www.thyiad.top/img/koa-mongo-debug-2.jpg)
+![](https://static.yirenyian.com/blog/koa-mongo-debug-2.jpg)
 ## 配置化
 代码就是一步步总结，边写边优化，重构。到目前为止，我们会发现有不少配置性的东西是散乱在不同文件中，比如说项目启动时监听的端口，接口的统一前缀，考虑到我们还会有很多配置项，我们应该把这些写到一个配置文件中集中管理。
 新建一个config.js:
