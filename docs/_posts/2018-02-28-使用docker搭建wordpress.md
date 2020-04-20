@@ -1,8 +1,20 @@
-### 前言
+---
+title: 使用docker搭建wordpress
+date: 2018-02-28
+categories:
+ - frontend
+tags:
+ - docker
+ - wordpress
+---
+
+## 前言
 去年在学习docker，在看完菜鸟教程和第一本docker书后，一直想实战用一下这个技术，多用用才能熟能生巧，真正体验它的利弊。正好傅老板用docker搭完了wordpress，我也就手痒跟着搭建了一下（也就是现在的这个博客网站）。
 此处记录一下搭建过程。
 
-### 搭建环境
+<!-- more -->
+
+## 搭建环境
 - 阿里云ECS
 > 去年双11买的，720/3年，1核1G1M香港服务器，centos 7.4
 有个小插曲，阿里云的工作人员还给我打电话，问我用的怎么样。。阿里云什么时候有这种回访了。。。
@@ -27,13 +39,13 @@
 > chmod +x /usr/bin/docker-compose
 > ```
 
-### 添加一个docker network
+## 添加一个docker network
 网站需要占据80端口，显然，我们的服务器不可能只有一个网站，所以部署一个nginx容器是必须的，让这个nginx来监听80以及443端口，再根据域名转发到对应的网站容器。容器之间的通信是通过network的，所以我们需要先添加一个network：
 ``` bash
  docker network create nginx-proxy
 ```
 
-### compose部署WordPress和MySql容器
+## compose部署WordPress和MySql容器
 - 创建工作目录，创建docker-compose.yml文件：
 ``` bash
 cd /usr
@@ -89,7 +101,7 @@ networks:
        name: nginx-proxy
 ```
 
-### 添加ssl证书
+## 添加ssl证书
 ``` bash
 # 列出所有的卷信息，查找到xxx_wp_certs(xxx是docker自动添加的)
 docker volume ls
@@ -105,7 +117,7 @@ cd /var/lib/docker/volumes/xxx_wp_certs/_data && sudo vim www.thyiad.top.crt
 ``` 
 nginx-proxy如果发现在certs文件夹中存在当前域名的.crt和.key文件，将自动转为https协议
 
-### 运行wordpress
+## 运行wordpress
 ``` bash
 docker-compose up -d
 ```

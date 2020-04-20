@@ -1,3 +1,11 @@
-# blog
+# vuepress-theme-reco-demo
 
-### 文章存档 of www.thyiad.top 
+Blog demo for vuepress-theme-reco
+
+```bash
+# 编译
+npm run build
+
+# 启动
+npm run dev
+```

@@ -1,4 +1,15 @@
-### 前言
+---
+title: koa2+mongodb搭建后台
+date: 2018-12-28
+categories:
+ - frontend
+tags:
+ - koa2
+ - mongodb
+ - nodejs
+---
+
+## 前言
 毫无疑问，目前nodejs里面用来开发后台的首选就是koa2+mongodb的组合了。参考过很多资料，都是零零碎碎不齐全，要么很简单只是教你如何运行一个demo，要么只讲了简单的一方面，要么就是一个复杂的koa项目生成器，我设想的一个最基础的后台应该具有以下内容：
 > 此处只讨论前后端分离，后台项目提供接口，不考虑模板渲染之类的，毕竟你都用nodejs做后台了，还不做前后端分离也太说不过去了
 - 对传入、返回及错误数据做统一处理
@@ -12,7 +23,7 @@
 
 所以在折腾完之后，就想把整个过程记录一下，如果你正好是刚开始摸索，应该能让你避免不少弯路。
 
-### 创建基础项目
+## 创建基础项目
 - 创建koa-mongo目录，并运行 npm init 创建package.json
 ``` bash
 mkdir koa-mongo
@@ -48,10 +59,10 @@ var server = app.listen(3000, function (){
 node ./app.js
 ```
 此时会打印一行日志：app start listening at http://:::3000，让我们来访问试试：
-<img src="http://www.thyiad.top/wp-content/uploads/2018/12/1-1024x645.jpg" alt="" width="750" height="472" class="alignnone size-large wp-image-187" />
+![](./img/koa-mongo-home.jpg)
 ok，koa启动一个项目就是这么简单。。
 
-### 添加路由
+## 添加路由
 在koa-router的使用说明中，我们可以看到是这样使用的：
 ```js
 var router = new Router();
@@ -104,10 +115,10 @@ const router = require('./router')
 app.use(router.routes()).use(router.allowedMethods())
 ```
 这个时候让我们重新启动一下，访问localhost:3000/api/test/hello试试：
-<img src="http://www.thyiad.top/wp-content/uploads/2018/12/2-test-hello-1024x705.jpg" alt="" width="750" height="516" class="alignnone size-large wp-image-189" />
+![](./img/koa-mongo-hello.jpg)
 可以看到正确返回了hello world。
 
-### 调试
+## 调试
 到这里了，有没有感觉哪里不对劲。每修改一次，都需要手动敲命令重启一次，这简直太烦了好嘛，我们程序猿哪能忍受这个。答案就是使用nodemon，这个玩意儿能监听我们的文件变更，自动运行命令重启应用。使用方式也很简单，这个我们直接全局安装就好了：
 ``` bash
 npm install -g nodemon
@@ -125,10 +136,10 @@ npm install -g nodemon
 "debug": "nodemon --inspect ./app.js",
 ```
 然后我们运行 npm run debug，刷新我们的网页，用f12打开，此时我们能看到开发者工具上面多了一个nodejs的图标：
-<img src="http://www.thyiad.top/wp-content/uploads/2018/12/debug-1.jpg" alt="" width="646" height="636" class="alignnone size-full wp-image-190" />
+![](./img/koa-mongo-debug-1.jpg)
 点击这个图标，就可以跟调试网页一样调试nodejs代码了：
-<img src="http://www.thyiad.top/wp-content/uploads/2018/12/debug-2.jpg" alt="" width="1336" height="534" class="alignnone size-full wp-image-191" />
-### 配置化
+![](./img/koa-mongo-debug-2.jpg)
+## 配置化
 代码就是一步步总结，边写边优化，重构。到目前为止，我们会发现有不少配置性的东西是散乱在不同文件中，比如说项目启动时监听的端口，接口的统一前缀，考虑到我们还会有很多配置项，我们应该把这些写到一个配置文件中集中管理。
 新建一个config.js:
 ```js
@@ -139,7 +150,7 @@ module.exports= {
 ```
 然后把用到的地方全部更改为变量
 
-### 跨域
+## 跨域
 为了防止跨域问题，我们需要使用koa2-cors类库，使用方式很简单：
 ```bash
 npm install koa2-cors
@@ -151,7 +162,7 @@ app.use(cors())
 ```
 一行代码搞定，cors的具体配置此处就不细说了，有兴趣的可以自己去看看
 
-### 处理参数，上传文件
+## 处理参数，上传文件
 一般来说，我们是使用koa-bodyparser 和 koa-multer来分别处理表单数据和文件数据的。这两个分别集成也没什么问题，但我们可以直接使用koa-body来完成。koa-body是基于co-body和formidable做了封装，同时支持参数解析和文件上传。最后是把参数和文件分别放到ctx.request.body和ctx.request.files变量中。
 我这里是把上传文件统一放到assets/upload目录中:
 ```js
@@ -187,23 +198,23 @@ const upload = async (ctx, next)=>{
 }
 ```
 
-### token验证
+## token验证
 使用jwt，待续
 
-### 统一返回格式
+## 统一返回格式
 待续
 
-### mongodb
+## mongodb
 待续
 
-### 日志模块
+## 日志模块
 待续
 
-### 微信支付
+## 微信支付
 待续
 
 
-### 办理网签
+## 办理网签
 - 地点：房产交易中心
     > 普陀区网点为：中山北路2930号
     > 周一至周六 上午 9：00-11：00；下午 13：30-16：00
@@ -217,7 +228,7 @@ const upload = async (ctx, next)=>{
     > 回执：《住房租赁合同网签业务回执》
     > 里面有填写租金一项，目前国家有规定租房要交税但没强制执行，不清楚这个金额对以后收税会不会有影响，可以考虑把这个价格写低一点，反正还按实际的来
 
-### 办理备案
+## 办理备案
 - 地点：社区事务受理中心
     > 普陀区网点为：中山北路3500号2号楼
     > 周一至周五8:30—16:30 ；双休日、节假日8:30-11:30
@@ -229,7 +240,7 @@ const upload = async (ctx, next)=>{
 - 叫号排队办理综合业务（房屋租赁备案），填写《房屋租赁备案申请表》
     > 回执：《上海市居住房屋租赁合同备案通知书》
 
-### 办理居住证
+## 办理居住证
 - 地点：同备案
 - 人物：自己
 - 材料、证件

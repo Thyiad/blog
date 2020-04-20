@@ -1,9 +1,19 @@
-### 前言
+---
+title: 使用docker搭建frp服务器
+date: 2018-03-05
+categories:
+ - tool
+tags:
+ - docker
+ - frp
+---
+
+## 前言
 - 把本地的开发环境映射到外网，这是我们经常会碰到的一个要求，比方说展示给别人看啦，临时测试啦。尤其在微信开发中，因为微信必须要求80端口，所以不转发的情况下，我们只能把代码部署到服务器之后才能验证测试，非常麻烦。
 - 最早的时候是花生壳，不过这家公司贼恶心。。后面开始用ngrok，然后现在又有了frp，相比来说frp的配置要更简单一点。
 - 因为没有找到合适的docker镜像，所以在参考很多之后，就有了如下自写的image及compose
 
-### 准备工作
+## 准备工作
 -  具有外网ip的服务器
 - 域名
 > 我这里是准备了一个子域名，*.frp.thyiad.top，把这这个域名解析到服务器，这样可以支持同时映射多个域名到外网，具体的子域名在frp客户端配置，服务端配置前缀域名为frp.thyiad.top
@@ -11,7 +21,7 @@
 - docker
 > 需要注意的是，我这里是基于ngin-proxy镜像来解析域名的，此处不再赘述，可参照之前的文章：[使用docker搭建wordpress](https://www.thyiad.top/2018/02/28/%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BAwordpress/)
 
-### docker file
+## docker file
 > 镜像已经上传到docker的hub上了，所以你也可以跳过docker file直接使用compose
 
 创建工作目录：
@@ -80,7 +90,7 @@ ENTRYPOINT ./frps -c ./conf/frps.ini
 docker build -t="thyiad/my-frp" .
 ```
 
-### docker compose
+## docker compose
 >在镜像编译好后，我们就可以开始compose文件了，毕竟compose比直接docker run要方便的多
 
 创建工作目录：
@@ -122,10 +132,10 @@ docker-compose up -d
 ```
 此时，我们的frp服务器就已经OK了。
 我们访问一下test.frp.thyiad.top试试：
-![](http://www.thyiad.top/wp-content/uploads/2018/03/unvisible-300x138.png)
+![](./img/frp-unvisible.png)
 显然，frp已经在运转了，只是该域名并没有绑定转发
 
-### frp客户端
+## frp客户端
 
 服务端搭好之后，我们就可以下载客户端进行使用了。需要前往frp的github上下载对应的版本，我这里是16.0，windows x64。
 
@@ -147,10 +157,10 @@ cd /d d:\frp
 frpc
 ```
 此时会出现以下界面：
-![](http://www.thyiad.top/wp-content/uploads/2018/03/frp-running-300x157.png)
+![](./img/frp-running.png)
 
 说明已经连接成功了，我们再来访问test.frp.thyiad.top试试：
-![](http://www.thyiad.top/wp-content/uploads/2018/03/frp-visible-300x87.png)
+![](./img/frp-visible.png)
 
 此时，我们的frp就已经搭建好了，很简单吧？
 > ngrok的服务器搭建在这里：
