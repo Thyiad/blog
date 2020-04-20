@@ -1,7 +1,7 @@
 module.exports = {
   "title": "Thyiad's Blog",
   "description": "I saw, I write",
-  "dest": "public",
+  "dest": "dist",
   "head": [
     [
       "link",
