@@ -33,9 +33,9 @@ tags:
 \Program Files\iisnode
 
 - 然后我们直接运行setupsamples.bat文件，它会自动在default web site中添加一个node项目
-![](./img/iisnode-sample.jpg)
+![](https://www.thyiad.top/img/iisnode-sample.jpg)
 - 此时我们访问http://localhost/node，如果能看到下面的页面就说明大功告成了
-![](./img/iisnode-suc.jpg)
+![](https://www.thyiad.top/img/iisnode-suc.jpg)
 ## 部署koa2项目
 还是老样子创建站点，然后将路径指向koa2项目的根路径，只需要添加一个web.config文件，填入以下内容：
 ``` xml
