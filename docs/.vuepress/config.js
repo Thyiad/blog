@@ -18,6 +18,7 @@ module.exports = {
       }
     ]
   ],
+  permalink: "/:year/:month/:day/:slug",
   // plugins: [
   //   [
   //     'vuepress-plugin-container',
