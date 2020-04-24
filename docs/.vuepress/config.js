@@ -18,51 +18,22 @@ module.exports = {
       }
     ]
   ],
-  // permalink: "/:year/:month/:day/:slug",
-  // plugins: [
-  //   [
-  //     'vuepress-plugin-container',
-  //     {
-  //       type: 'tip',
-  //       defaultTitle: '',
-  //     },
-  //   ],
-  //   [
-  //     'vuepress-plugin-container',
-  //     {
-  //       type: 'warning',
-  //       defaultTitle: '',
-  //     },
-  //   ],
-  //   [
-  //     'vuepress-plugin-container',
-  //     {
-  //       type: 'danger',
-  //       defaultTitle: '',
-  //     },
-  //   ],
-  //   [
-  //     'vuepress-plugin-container',
-  //     {
-  //       type: 'theorem',
-  //       defaultTitle: '',
-  //     },
-  //   ],
-  //   [
-  //     'vuepress-plugin-container',
-  //     {
-  //       type: 'right',
-  //       defaultTitle: '',
-  //     },
-  //   ],
-  //   [
-  //     'vuepress-plugin-container',
-  //     {
-  //       type: 'details',
-  //       defaultTitle: '',
-  //     },
-  //   ],
-  // ],
+  plugins: [
+    'vuepress-plugin-dehydrate',
+    {
+      // 禁用 SSR
+      noSSR: '404.html',
+      // 移除 scripts
+      noScript: [
+        '_posts/**/*.html',
+        'categories/**/*.html',
+        'tag/**/*.html',
+        'tags/**/*.html',
+        'timeline/**/*.html',
+        '**/static.html',
+      ],
+    },
+  ],
   "theme": "reco",
   "themeConfig": {
     "noFoundPageByTencent": false,
