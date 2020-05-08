@@ -12,7 +12,7 @@ tags:
 ## 前言
 其实，我博客写的很少了，相对来说，流水账笔记记的更多一点（[笔记](https://github.com/thyiad/learn)）。17年底研究docker的时候，顺便用docker搭建了wordpress，于是就有了这个网站。
 然而前段时间发现wordpress经常挂，docker log排查后，发现是因为mysql太吃内存，我这台1G1核的服务器带不动了。。。
-于是乎花了1天假期用vuepress+github page+travis ci重新搭建了一下~
+于是乎花了1天假期用vuepress+github page+travis ci重新搭建，此处简单记录一下
 
 ## vuepress
 具体使用就不说了，[官方文档](https://vuepress.vuejs.org/zh/)很详细。
@@ -22,10 +22,11 @@ tags:
 
 ## github page
 按照github要求，创建一个 [name].github.io仓库即可
+[官方文档](https://help.github.com/cn/github/working-with-github-pages/getting-started-with-github-pages)
 
 ## travis ci
 步骤如下：
-- 注册并开通travis，打开blog仓库
+- 注册并开通travis，打开blog仓库的自动构建
 - blog仓库下创建.travis.yml文件, 我的完整命令如下
     ``` bash
     language: node_js
