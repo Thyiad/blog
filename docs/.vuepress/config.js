@@ -38,8 +38,8 @@ module.exports = {
   "themeConfig": {
     "noFoundPageByTencent": false,
     "valineConfig": {
-      "appId": '...',// your appId
-      "appKey": '...', // your appKey
+      "appId": 'lq347nGqFndsofc47G6xGbEJ-gzGzoHsz',// your appId
+      "appKey": 'vXtfdF2ALquHYFnX1njBgmp5', // your appKey
     },
     "nav": [
       {
