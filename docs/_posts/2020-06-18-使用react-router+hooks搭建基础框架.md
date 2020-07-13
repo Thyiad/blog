@@ -12,6 +12,7 @@ tags:
 
 ## 前言
 最典型的一个react项目就是react-router+redux（可能再加上redux-thunk或saga），在hooks出来之后，redux也同步跟进加了很多hooks，但已经可以完全抛弃redux，仅仅使用useReducer等hooks来管理数据流了（大型、复杂项目的话，目前还是推荐redux）
+这个版本的代码[在这](https://github.com/Thyiad/react-ssr/tree/tag-v2)
 
 ## 步骤
 [前文](https://www.thyiad.top/_posts/2020-06-05-react+ts%E6%90%AD%E5%BB%BA%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B.html)中已经配置好webpack了，接下来让我们配置react-router以及reducer

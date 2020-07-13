@@ -12,6 +12,7 @@ tags:
 ## 前言
 vue和react的项目已经大大小小做过很多个了，基本都是基于cli搭建的，比如vue使用vue-cli，react使用umi、create-react-app、razzle、next等等，虽然各个配置也基本清楚，但webpack也没有系统学习过，都是需要用时再翻文档。
 所以这次自己从零搭建，也算是温习巩固一下。
+[github仓库在这](https://github.com/Thyiad/react-ssr)，每个版本都有对应的tag分支，每篇文章也有对应的说明
 > 此前看到过这样一个观点：团队中只要有一两个人很熟悉webpack就可以了，就算这一两个人离职了，再安排人去深入学习两个礼拜，也足够用了。还挺赞同的，因为我也感觉webpack就是各种配置，配配配。。
 
 ## 整体流程
