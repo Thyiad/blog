@@ -103,8 +103,8 @@ module.exports = {
     "authorAvatar": "/avatar.png",
     "startYear": "2018",
     // 备案
-    record: '',
-    recordLink: '',
+    record: '沪ICP备2020037732号',
+    recordLink: 'http://beian.miit.gov.cn',
     cyberSecurityRecord: '',
     cyberSecurityLink: '',
   },
