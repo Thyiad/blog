@@ -28,6 +28,6 @@ jobs:
         with:
           source-directory: 'dist'
           destination-github-username: 'Thyiad'
-          destination-repository-name: 'thyiad.github.i'
+          destination-repository-name: 'thyiad.github.io'
           user-email: 1520583107@qq.com
           target-branch: master
