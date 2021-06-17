@@ -15,8 +15,19 @@ jobs:
           npm install
           npm run build
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.0
+#       - name: Deploy 🚀
+#         uses: JamesIves/github-pages-deploy-action@4.1.0
+#         with:
+#           branch: gh # The branch the action should deploy to.
+#           folder: dist # The folder the action should deploy.
+
+      - name: Pushes to github.io
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          branch: gh # The branch the action should deploy to.
-          folder: dist # The folder the action should deploy.
+          source-directory: 'dist'
+          destination-github-username: 'Thyiad'
+          destination-repository-name: 'thyiad.github.i'
+          user-email: 1520583107@qq.com
+          target-branch: master
